@@ -39,33 +39,46 @@ disconnect_db();
         <title>Cập nhật user</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Jquery -->
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
     </head>
     <body>
+        <div class="container-fluid">
         <h1>Cập nhật user</h1>
-        <a href="user-list.php">Trở về</a> <br/> <br/>
-        <form method="post" action="user-edit.php?id=<?php echo $data['id']; ?>">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input type="text" name="name" value="<?php echo $data['UserName']; ?>"/>
-                        <?php if (!empty($errors['name'])) echo $errors['name']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Info</td>
-                    <td>
-                        <textarea name="info" rows="5" style="width: 100%;" placeholder="Giới thiệu về bạn ..."><?php echo !empty($data['InfoUser']) ? $data['InfoUser'] : ''; ?></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?php echo $data['UserId']; ?>"/>
-                        <input type="submit" name="edit_user" value="Lưu"/>
-                    </td>
-                </tr>
-            </table>
+        <a href="user-list.php" style="position: absolute; right: 20px; top: 30px; font-size: 1.5em;">
+            <span class="glyphicon glyphicon-hand-right"></span> Trở về
+        </a><br/>
+        <form method="post" action="user-edit.php?id=<?php echo $data['id']; ?>" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">User name :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $data['UserName']; ?>" placeholder="Nhập username ...">
+                    <?php if (!empty($errors['name'])) echo $errors['name']; ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="info" class="col-sm-2 control-label">Info User :</label>
+                <div class="col-sm-10">
+                    <textarea id="info" name="info" class="form-control" rows="5" placeholder="Giới thiệu về bạn ..."><?php echo !empty($data['InfoUser']) ? $data['InfoUser'] : ''; ?></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="hidden" name="id" value="<?php echo $data['UserId']; ?>"/>
+                    <button type="submit" name="edit_user" class="btn btn-default">
+                        <span class="glyphicon glyphicon-ok"></span> Lưu
+                    </button>
+                </div>
+            </div>
         </form>
+        <img style="position: absolute; margin-left: 45%;" src="http://img.photobucket.com/albums/v209/DuaBeo35_HinhVuiCuoi/Album1/jm040000.gif" alt="Xem hinh thi click vao :V">
+        </div>
     </body>
 </html>
